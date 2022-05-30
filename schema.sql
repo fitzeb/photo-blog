@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS tag_mapping;
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_author INTEGER NOT NULL,
+    post_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    post_file_location TEXT NOT NULL,
+    post_caption TEXT NOT NULL,
+    FOREIGN KEY (post_author) REFERENCES users (id)
+);
+
+CREATE TABLE tags (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    tag_name TEXT UNIQUE NOT NULL,
+    tag_description TEXT UNIQUE
+);
+
+CREATE TABLE tag_mapping (
+    post_id INTEGER,
+    tag_id INTEGER,
+    FOREIGN KEY (post_id) REFERENCES posts (id)
+    FOREIGN KEY (tag_id) REFERENCES tags (id)
+);
