@@ -1,0 +1,32 @@
+{% extends 'core.html' %}
+{% block content %}
+    <h3>Add a New Post</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+        <lable for="post_author">Author:</lable>
+        <br>
+        <select     name="post_author"
+                    required
+                    autofocus>
+            <option value="0" selected disabled>Select One...</option>
+            <option value="1">Dewey</option>
+            <option value="2">Bob</option>
+        </select>
+        <br><br>
+        <lable for="post_file_location">File:</lable>
+        <br>
+        <input      name="post_file_location"
+                    type="text">
+        <br><br>
+        <lable for="post_caption">Caption:</lable>
+        <br>
+        <textarea   name="post_caption"
+                    placeholder="Type caption here..."
+                    rows="15"
+                    cols="60"
+                    autofocus
+                    autocomplete="off"
+                    ></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

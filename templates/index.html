@@ -1,0 +1,22 @@
+{% extends 'core.html' %}
+{% block content %}
+    <h3>Post Information</h3>
+    {% for post in posts %}
+    <h4>Post</h4>
+    <ul>
+        <li>Caption: {{ post['post_caption'] }}</li>
+        <li>Time Stamp: {{ post['post_created'] }}</li>
+        <li>Author: {{ post['username'] }}</li>
+        <li>File: {{ post['post_file_location'] }}</li>
+    </ul>
+    {% endfor %}
+    <h3>User Information</h3>
+    {% for user in users %}
+    <h4>User</h4>
+    <ul>
+        <li>Username: {{ user['username'] }}</li>
+        <li>Password: {{ user['password'] }}</li>
+        <li>ID: {{ user['id'] }}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}
